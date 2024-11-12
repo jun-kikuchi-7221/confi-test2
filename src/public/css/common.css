@@ -1,0 +1,48 @@
+.header {
+    border: 1px solid #E0DFDE;
+    display: flex;
+    justify-content: center;
+    /* 水平方向に中央揃え */
+    align-items: center;
+    /* 垂直方向に中央揃え */
+    height: 100px;
+    /* headerの高さを指定 */
+    position: relative;
+    /* ボタンを右端に配置するために基準を作成 */
+
+}
+
+.header__inner {
+    margin: 0 auto;
+    max-width: 1512px;
+}
+
+.header-utilities {
+    display: flex;
+    /* text-align: center; */
+}
+
+.header__logo {
+    color: #8B7969;
+    text-decoration: none;
+    font-family: Inika;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.header-nav {
+    display: flex;
+    margin-left: 300px;
+}
+
+.header-nav__button-submit {
+    padding: 5px;
+    width: 100px;
+    height: 34px;
+    border: 1px solid #D9C6B5;
+    background: #F0F0F099;
+    font-family: Inika;
+    font-size: 20px;
+    color: #D9C6B5;
+    cursor: pointer;
+}
