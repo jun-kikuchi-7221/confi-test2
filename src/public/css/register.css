@@ -1,0 +1,144 @@
+.element {
+    width: 736px;
+    /* 幅を736ピクセルに設定 */
+    height: 644px;
+    /* 高さを644ピクセルに設定 */
+    top: 264px;
+    /* 要素の上端を264ピクセル下に配置（positionがrelativeやabsoluteの場合） */
+    left: 388px;
+    /* 要素の左端を388ピクセル右に配置（positionがrelativeやabsoluteの場合） */
+    gap: 0px;
+    /* フレックスボックスやグリッドレイアウトでの子要素間のスペースを0ピクセルに設定 */
+    border-radius: 10px 0px 0px 0px;
+    /* 左上の角を10ピクセルの半径で丸める */
+    border: 1px solid transparent;
+    /* 枠線を1ピクセルの透明な線で設定（色は透明） */
+    opacity: 0;
+    /* 要素の不透明度を0に設定（完全に透明） */
+    background: white;
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+    height: 60px;
+}
+
+.btn {
+    padding: 5px;
+    width: 100px;
+    height: 34px;
+    border: 1px solid #D9C6B5;
+    background: #F0F0F099;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inika;
+    font-size: 20px;
+    color: #D9C6B5;
+    cursor: pointer;
+}
+
+.register__content {
+    height: 882px;
+    background-color: #F1ECE7;
+}
+
+
+
+.register-form__content {
+    margin: 0 auto;
+    padding: 100px 150px;
+    /* padding: 30px 15px; */
+    max-width: 1230px;
+}
+
+.register-form__heading {
+    text-align: center;
+    font-family: Inika;
+    font-size: 35px;
+    color: #8B7969;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 50px;
+    padding-top: 40px;
+
+}
+
+.register-form {
+    width: 736px;
+    height: 644px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #C5B9B0;
+    border-radius: 10px;
+
+}
+
+
+.form {
+    border: 10px #000;
+    margin: 60px auto;
+    width: 445px;
+    height: 396px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.form__group {
+    margin-bottom: 5px;
+}
+
+.form__group-title {
+    text-align: left;
+    font-family: Inika;
+    font-size: 25px;
+    color: #8B7969;
+}
+
+.form__error {
+    font-family: Inika;
+    height: 20px;
+    color: #ff0000;
+    text-align: left;
+}
+
+.form__input--text input {
+    padding: 10px;
+    width: 100%;
+    margin-top: 5px;
+    height: 55px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #F4F4F4;
+    ;
+    font-family: Inika;
+    font-size: 14px;
+
+    appearance: none;
+}
+
+.form__button {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.form__button-submit {
+    padding: 5px;
+    width: 120px;
+    height: 46px;
+    border: none;
+    background: #82756A;
+    font-family: Inika;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+}

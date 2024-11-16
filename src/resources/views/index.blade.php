@@ -20,7 +20,7 @@
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
-                <div class="form__input--text">
+                <div class="form__input--name1">
                     <input type="text" name="name" placeholder="例:山田" value="{{ old('name') }}" />
                 </div>
                 <div class="form__error">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="form__group-content">
-                <div class="form__input--text">
+                <div class="form__input--name2">
                     <input type="text" name="name" placeholder="例:太郎" value="{{ old('name') }}" />
                 </div>
                 <div class="form__error">
@@ -46,7 +46,7 @@
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
-                <div class="form__input--gendertext">
+                <div class="form__input--gender-text">
                     <label class="custom-radio">
                         <input type="radio" name="gender" value="male" checked>
                         <span class="radio-circle"></span>
@@ -76,8 +76,8 @@
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
-                <div class="form__input--emailtext">
-                    <input class="emailtext" type="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}" />
+                <div class="form__input--email3">
+                    <input type="email" name="email" placeholder="例: test@example.com" value="{{ old('email') }}" />
                 </div>
                 <div class="form__error">
                     @error('email')
@@ -93,15 +93,70 @@
                 <!-- <label for="phone-number">電話番号 <span style="color: red;"> ※</span></label> -->
             </div>
             <div class="form__group-content">
-                <div class="form__input--text">
-                    <input type="text" id="phone-part1" name="phone_part1" maxlength="3" size="3" placeholder="080" value="{{ old('tel') }}" /> -
-                    <input type="text" id="phone-part2" name="phone_part2" maxlength="4" size="4" placeholder="1234" value="{{ old('tel') }}" /> -
+                <div class="form__input--tell4">
+                    <input type="text" id="phone-part1" name="phone_part1" maxlength="3" size="3" placeholder="080" value="{{ old('tel') }}" />
+                    <span class="separator">-</span>
+                    <input type="text" id="phone-part2" name="phone_part2" maxlength="4" size="4" placeholder="1234" value="{{ old('tel') }}" />
+                    <span class="separator">-</span>
                     <input type="text" id="phone-part3" name="phone_part3" maxlength="4" size="4" placeholder="5678" value="{{ old('tel') }}" />
+                </div>
+                <div class="form__error">
+                    @error('tel')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
         </div>
+
+        <div class="form__group">
+            <div class="form__group-title">
+                <span class="form__label--item">住所</span>
+                <span class="form__label--required">※</span>
+            </div>
+            <div class="form__group-content">
+                <div class="form__input--text5">
+                    <input class="address-input" type="text" name="address" placeholder="例: 東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}" />
+                </div>
+                <div class="form__error">
+                    @error('address')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="form__group">
+            <div class="form__group-title">
+                <span class="form__label--item">建物名</span>
+            </div>
+            <div class="form__group-content">
+                <div class="form__input--text6">
+                    <input class="address-input" type="text" name="address" placeholder="例: 千駄ヶ谷マンション101" value="{{ old('email') }}" />
+                </div>
+                <div class="form__error">
+                    @error('building')
+                    {{ $message }}
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="form__group">
+            <div class="form__group-title">
+                <span class="form__label--item">お問い合わせの種類</span>
+                <span class="form__label--required">※</span>
+            </div>
+            <div class="custom-select-container">
+                <select class="custom-select"> <!-- name="category_id" -->
+                    <option value="">選択してください</option>
+                    <!-- <option value="delivery">商品のお届けについて</option>
+                    <option value="exchange">商品の交換について</option>
+                    <option value="trouble">商品トラブル</option>
+                    <option value="feedback">ショップへのお問い合わせ</option>
+                    <option value="other">その他</option> -->
+                </select>
+            </div>
+        </div>
         <div class="form__error">
-            @error('tel')
+            @error('content')
             {{ $message }}
             @enderror
         </div>

@@ -1,7 +1,7 @@
 .contact-form__content {
     margin: 0 auto;
     max-width: 1512px;
-    max-height: 982px;
+    /* max-height: 982px; */
     top: 147px;
     left: 273px;
     background: #fff;
@@ -53,27 +53,37 @@
     text-align: left;
 }
 
-.form__input--text input {
+.form__input--name1 input {
     padding: 10px;
-    width: 200px;
+    padding-left: 20px;
+    width: 288px;
+    margin-left: 170px;
     border: 1px solid #ddd;
     border-radius: 3px;
     background: #F4F4F4;
-
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
     appearance: none;
 }
 
-.form__input--gendertext {
+.form__input--name2 input {
+    padding: 10px;
+    padding-left: 20px;
+    width: 288px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+    appearance: none;
+}
+
+.form__input--gender-text {
     text-align: left;
     margin-left: 100px;
     width: 620px;
-}
-
-
-.form__input--text input {
-    font-family: Inika;
-    font-size: 14px;
-    height: 40px;
 }
 
 .custom-radio {
@@ -115,33 +125,151 @@ input[type="radio"]:checked+.radio-circle::after {
     opacity: 1;
 }
 
-.form__input--emailtext {
+
+.form__input--email3 input {
     padding: 10px;
+    padding-left: 20px;
     width: 620px;
     border: 1px solid #ddd;
     border-radius: 3px;
     background: #F4F4F4;
-    text-align: left;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
 
     appearance: none;
-
 }
 
-.emailtext {
+.form__group-content {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.separator {
+    margin: 0 15px;
+}
+
+.form__input--tell4 input {
+
+    padding: 10px;
+    /* padding-left: 20px; */
+    width: 178px;
+    /* margin: 0 13px; */
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+    appearance: none;
+}
+
+/* .separator {
+    margin: 0 10px;
+    font-size: 20px;
+} */
+
+.form__input--text5 input {
+    padding: 10px;
+    padding-left: 20px;
+    width: 620px;
+    height: 38px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+    appearance: none;
+}
+
+.form__input--text6 input {
+    padding: 10px;
+    padding-left: 20px;
+    width: 620px;
+    height: 38px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+    appearance: none;
+}
+
+
+/* .emailtext {
     border: none;
     background: #F4F4F4;
     font-family: Inika;
     font-size: 14px;
+}*/
+/* .create-form__item-select {
+    display: flex;
+    width: 330px;
+    margin-right: 290px;
+    padding: 10px;
+    width: 60%;
+    height: 38px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+
+    appearance: none;
+}*/
+
+.custom-select-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 290px;
 }
+
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 10px;
+    height: 38px;
+    padding-left: 20px;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #F4F4F4;
+    width: 330px;
+    
+}
+
+.custom-select-container::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+
+    pointer-events: none;
+    /* 矢印をクリックできないようにする */
+    /* color: #8B7969; */
+}
+
+
 
 
 .form__input--textarea textarea {
     padding: 10px;
     width: 620px;
-    height: 180px;
+    height: 130px;
     border: 1px solid #ddd;
     border-radius: 3px;
     background: #F4F4F4;
+    font-family: Inika;
+    font-size: 14px;
+    color: #8B7969;
 
     appearance: none;
 }
