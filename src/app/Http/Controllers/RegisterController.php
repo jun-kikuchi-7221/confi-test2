@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -13,7 +14,14 @@ class RegisterController extends Controller
 
     public function register()
     {
-        return view('register');
+        return view('/auth/register');
+    }
+
+    public function store(Request $request)
+    {
+        $register = $request->only(['name', 'email', 'password']);
+        User::create($register);
+        return view('/auth/login');
     }
 
     public function admin()

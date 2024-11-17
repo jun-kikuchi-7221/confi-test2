@@ -19,7 +19,7 @@
         <p>Register</p>
     </div>
     <div class="register-form">
-        <form class="form" action="/register" method="post">
+        <form class="form" action="/user" method="post">
             @csrf
             <div class="form__group">
                 <div class="form__group-title">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="form__group-content">
                     <div class="form__input--text">
-                        <input type="text" name="password" placeholder="例:coachtech1106" />
+                        <input type="password" name="password" placeholder="例:coachtech1106" />
                     </div>
                     <div class="form__error">
                         @error('password')

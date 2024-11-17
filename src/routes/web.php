@@ -25,6 +25,12 @@ Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'thanks']);
 Route::post('/index',[ContactController::class, 'index']);
+Route::get('/admin/search', [ContactController::class, 'search']);
 
-Route::post('/login', [RegisterController::class, 'login']);
+
+Route::post('/login', [RegisterController::class, 'admin']);
+Route::get('/login', [RegisterController::class, 'login']);
+Route::post('/register', [RegisterController::class, 'login']);
 Route::get('/register', [RegisterController::class, 'register']);
+Route::post('/user', [RegisterController::class, 'store']);
+

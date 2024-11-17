@@ -1,0 +1,137 @@
+.header-btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 100px;
+    height: 60px;
+}
+
+.btn {
+    padding: 5px;
+    width: 100px;
+    height: 34px;
+    border: 1px solid #D9C6B5;
+    background: #F0F0F099;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inika;
+    font-size: 20px;
+    color: #D9C6B5;
+    cursor: pointer;
+}
+
+.admin-form__content {
+    /* display: flex; */
+    /* justify-content: center; */
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1515px;
+}
+
+.admin-form__heading {
+    text-align: center;
+
+}
+
+p {
+    font-family: Inika;
+    font-size: 35px;
+    color: #8B7969;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    text-align: center;
+    width: 80%;
+    height: 59px;
+    background: #8B7969;
+    margin: 0 auto;
+
+}
+
+.form__group {
+    display: flex;
+    font-family: Inika;
+    font-size: 17px;
+}
+
+.search-button {
+    width: 100px;
+}
+
+/* .form__group-title */
+
+.admin__table {
+
+    display: flex;
+    text-align: center;
+    width: 80%;
+    height: 59px;
+    font-family: Inika;
+    font-size: 20px;
+    background: #8B7969;
+    margin: 0 auto;
+}
+
+.admin__table-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: Inika;
+    font-size: 20px;
+    color: #fff;
+
+
+    /* display: flex; */
+    gap: 80px;
+    /* リストアイテム間のスペースを調整 */
+    list-style: none;
+    /* マーカーを非表示に */
+    padding: 15px;
+    /* デフォルトのパディングを削除 */
+
+}
+
+.form__label--item {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.search_group {
+    height: 50px;
+}
+
+.admin__content {
+    height: 50px;
+    /* background-color: #F1ECE7; */
+}
+
+
+
+
+
+.admin-form {
+    width: 736px;
+    height: 579px;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid #C5B9B0;
+    border-radius: 10px;
+
+}
+
+
+.search-form {
+    border: 10px #000;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+
+}
