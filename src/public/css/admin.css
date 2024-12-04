@@ -22,17 +22,18 @@
     cursor: pointer;
 }
 
-.admin-form__content {
-    /* display: flex; */
-    /* justify-content: center; */
-    margin: 0 auto;
-    padding: 30px 15px;
+.admin-form {
     max-width: 1515px;
+
 }
 
 .admin-form__heading {
+    margin-top: 40px;
+    margin-bottom: 30px;
     text-align: center;
-
+    font-size: 24px;
+    /* margin: 20px 0; */
+    font-weight: bold;
 }
 
 p {
@@ -42,96 +43,243 @@ p {
     margin: 0;
 }
 
-.form {
+
+
+/* フォーム */
+.admin-form__content {
     display: flex;
-    text-align: center;
+    justify-content: space-between;
     width: 80%;
-    height: 59px;
-    background: #8B7969;
-    margin: 0 auto;
+    height: 50px;
+    gap: 10px;
+    margin: 20px auto;
+}
+.admin-form__content-item {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.admin-form__content-item--input,
+.admin-form__content-item--select,
+.admin-form__content-item--date {
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    
+    
+}
+
+
+.form-input {
+    width: 40%;
+    padding-left: 20px;
+    font-family: Inika;
+    font-size: 16px;
+    color: #BEB1A6;
+    border: 1px solid #E3DED9;
+}
+
+.form-select {
+
+    appearance: none;
+        /* デフォルトの矢印を非表示 */
+    -moz-appearance: none;
+        /* Firefox対応 */
+    -webkit-appearance: none;
+        /* Safari対応 */
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M4 0l3 6 3-6z" fill="%23BEB1A6"/></svg>') no-repeat right 10px center;
+    background-size: 20px;
+    width: 12%;
+    padding: 5px 40px 5px 20px;
+    font-family: Inika;
+    font-size: 16px;
+    color: #BEB1A6;
+    border: 1px solid #E3DED9;
 
 }
 
-.form__group {
-    display: flex;
+.form-select2 {
+
+    appearance: none;
+        /* デフォルトの矢印を非表示 */
+    -moz-appearance: none;
+        /* Firefox対応 */
+    -webkit-appearance: none;
+        /* Safari対応 */
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M4 0l3 6 3-6z" fill="%23BEB1A6"/></svg>') no-repeat right 10px center;
+    background-size: 20px;
+    width: 25%;
+    padding-left: 20px;
     font-family: Inika;
-    font-size: 17px;
+    font-size: 16px;
+    color: #BEB1A6;
+    border: 1px solid #E3DED9;
+
+}
+
+
+
+.form-date {
+    appearance: none;
+        /* デフォルトの矢印を非表示 */
+    -moz-appearance: none;
+        /* Firefox対応 */
+    -webkit-appearance: none;
+        /* Safari対応 */
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6"><path d="M4 0l3 6 3-6z" fill="%23BEB1A6"/></svg>') no-repeat right 10px center;
+    background-size: 20px;
+    width: 16%;
+    padding-left: 20px;
+    font-family: Inika;
+    font-size: 16px;
+    color: #BEB1A6;
+    border: 1px solid #E3DED9;
+
 }
 
 .search-button {
-    width: 100px;
-}
-
-/* .form__group-title */
-
-.admin__table {
-
-    display: flex;
-    text-align: center;
-    width: 80%;
-    height: 59px;
+    width: 10%;
     font-family: Inika;
-    font-size: 20px;
-    background: #8B7969;
-    margin: 0 auto;
+    font-size: 18px;
+    background-color: #8B7969;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.reset-button {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+        /* 水平方向の中央揃え */
+    align-items: center;
+        /* 垂直方向の中央揃え */
+    font-size: 18px;
+    background-color: #D9C6B5;
+    color: white;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.admin__table-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.reset-button:hover {
+    background-color: #5a6268;
+}
+
+/* テーブル */
+.admin-table {
+    margin: 20px auto;
+    width: 80%;
+    border-collapse: collapse;
+    /* background-color: #fff; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    /* overflow: hidden; */
+}
+
+.admin-table__inner {
+    width: 100%;
+    text-align: left;
+    border: 1px solid #e0dfde;
+}
+
+.admin-table__row {
+    border-bottom: 1px solid #e0dfde;
+    height: 59px;
+    background: #8B7969;
     font-family: Inika;
     font-size: 20px;
     color: #fff;
+}
 
+.admin-table__row1 {
+    border-bottom: 1px solid #e0dfde;
+    height: 59px;
+    /* background: #8B7969; */
+    font-family: Inika;
+    font-size: 20px;
+    /* color: #8B7969; */
 
-    /* display: flex; */
-    gap: 80px;
-    /* リストアイテム間のスペースを調整 */
-    list-style: none;
-    /* マーカーを非表示に */
+}
+
+.admin-table__header-span {
+    background-color: #8B7969;
     padding: 15px;
-    /* デフォルトのパディングを削除 */
-
+    font-weight: bold;
 }
 
-.form__label--item {
-    display: flex;
-    justify-content: space-between;
+.admin-table__item {
+    padding: 15px;
+    color: #8B7969;
 }
 
-
-.search_group {
-    height: 50px;
+.admin-table__row:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
-.admin__content {
-    height: 50px;
-    /* background-color: #F1ECE7; */
+/* 詳細ボタン */
+.admin-table__item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-
-
-
-
-.admin-form {
-    width: 736px;
-    height: 579px;
-    margin: 0 auto;
-    background-color: white;
-    border: 1px solid #C5B9B0;
-    border-radius: 10px;
-
+.admin-table__item a:hover {
+    text-decoration: underline;
 }
 
-
-.search-form {
-    border: 10px #000;
-    margin: 0 auto;
-    margin-bottom: 20px;
+/* ページネーション */
+.pagination {
     width: 80%;
-    height: 50px;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
+    align-items: center;
+    margin: 40px auto 25px auto;
+    /* list-style: none; */
+    /* padding: 0; */
+}
 
+.pagination a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    font-family: Inika;
+    font-size: 18px;
+    font-weight: bold;
+    color: #8B7969;
+    cursor: pointer;
+    border: 1px solid #E0DFDE;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+
+}
+
+.pagination a:hover {
+    background-color: #8B7969;
+    color: #fff;
+
+}
+
+/* .pagination a:hover { 
+    background-color: #007bff;
+    color: white;
+}*/
+
+/* .pagination .active span { 
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+} */
+
+.pagination .disabled {
+    color: #ccc;
+    cursor: not-allowed;
 }

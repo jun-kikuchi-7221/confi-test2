@@ -1,7 +1,7 @@
 .confirm__content {
     margin: 0 auto;
     padding: 30px 15px;
-    max-width: 1230px;
+    max-width: 1512px;
 }
 
 .confirm__heading {
@@ -26,12 +26,15 @@
 }
 
 .confirm-table__header {
-    padding: 15px;
-    width: 20%;
+    padding: 25px;
+    padding-left: 62px;
+    width: 30%;
+    text-align: left;
     border-bottom: 1px solid #ddd;
     background-color: #baa899;
     font-weight: bold;
     font-family: Inika;
+    font-size: 20px;
     color: #fff;
 
 }
@@ -39,12 +42,34 @@
 .confirm-table__text {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding-left: 45px;
+    outline: none;
+    font-family: Inika;
+    font-size: 20px;
+    color: #8B7969;
 }
 
-.confirm-table__text input {
-    width: 100%;
-    outline: none;
-    border: none;
+.confirm-table__text1 {
+    
+    padding: 15px 45px;
+        /* 上下と左右に適切な余白 */
+    text-align: left;
+        /* テキストを左揃え */
+    /* white-space: pre-wrap; */
+        /* 改行を反映 */
+    word-break: break-word;
+        /* 長い単語を折り返す */
+    font-family: 'Inika', sans-serif;
+        /* フォント設定 */
+    font-size: 20px;
+        /* フォントサイズ */
+    line-height: 1.5;
+        /* 行間を均一に設定 */
+    border-bottom: 1px solid #ddd;
+        /* 下線 */
+    color: #8B7969;
+        /* テキストカラー */
 }
 
 .confirm-table__row:last-child .confirm-table__header,
@@ -53,17 +78,31 @@
 }
 
 .form__button {
-    margin-top: 30%;
-    text-align: center;
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
 }
 
 .form__button-submit {
-    padding: 10px;
+    padding: 5px;
     width: 120px;
     height: 42px;
     border: none;
     background: #82756A;
-    ;
+    font-family: Inika;
+    font-size: 20px;
     color: #fff;
+    cursor: pointer;
+}
+
+.form__button-submit--fixes {
+    background: none;
+    border: none;
+    margin-left: 52px;
+    font-family: Inika;
+    font-size: 20px;
+    color: #8B7969;;
+    text-decoration: underline;
+    padding: 0;
     cursor: pointer;
 }

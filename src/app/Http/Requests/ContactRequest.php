@@ -28,11 +28,11 @@ class ContactRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'gender' => 'required',
             'email' => ['required', 'email'],
-            'phone_part1' => ['required', 'integer', 'max:5'],
-            'phone_part2' => ['required', 'integer', 'max:5'],
-            'phone_part3' => ['required', 'integer', 'max:5'],
+            'tel1' => ['required', 'numeric', 'max:99999'],
+            'tel2' => ['required', 'numeric', 'max:99999'],
+            'tel3' => ['required', 'numeric', 'max:99999'],
             'address' => 'required',
-            'content' => 'required',
+            'category_id' => 'required|exists:categories,id',
             'detail' =>  ['required', 'max:120']
         ];
     }
@@ -45,16 +45,29 @@ class ContactRequest extends FormRequest
             'gender.required' => '性別を選択してください',
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
-            'phone_part1.required' => '電話番号を入力してください',
-            'phone_part2.required' => '電話番号を入力してください',
-            'phone_part3.required' => '電話番号を入力してください',
-            'phone_part1.integer|max:5' => '電話番号は５桁までの数字で入力してください',
-            'phone_part2.integer|max:5' => '電話番号は５桁までの数字で入力してください',
-            'phone_part3.integer|max:5' => '電話番号は５桁までの数字で入力してください',
+            'tel1.required' => '電話番号を入力してください',
+            'tel2.required' => '電話番号を入力してください',
+            'tel3.required' => '電話番号を入力してください',
+            'tel1.numeric' => '電話番号は５桁までの数字で入力してください',
+            'tel2.numeric' => '電話番号は５桁までの数字で入力してください',
+            'tel3.numeric' => '電話番号は５桁までの数字で入力してください',
+            'tel1.max' => '電話番号は５桁までの数字で入力してください',
+            'tel2.max' => '電話番号は５桁までの数字で入力してください',
+            'tel3.max' => '電話番号は５桁までの数字で入力してください',
             'address.required' => '住所を入力してください',
-            'content.required' => 'お問い合わせの種類を選択してください',
+            'category_id.required' => 'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせの内容を入力してください',
             'detail.max:120' => 'お問い合わせ内容は120文字以内で入力してください'
         ];
     }
+
+    /*public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            // 'gender' が 'other' の場合にエラーメッセージを追加
+            if ($this->input('gender') == 'other') {
+                $validator->errors()->add('gender', '性別を選択してください。');
+            }
+        });
+    }*/
 }

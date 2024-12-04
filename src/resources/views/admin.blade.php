@@ -14,58 +14,89 @@
 @endsection
 
 @section('content')
-<div class="admin-form__content">
+<div class="admin-form">
     <div class="admin-form__heading">
         <p>Admin</p>
     </div>
 </div>
-<form class="search-form" action="/admin/search" method="get">
-    @csrf
-    <div class="search-form__item">
-        <input class="search-form__item-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword') }}">
-        <select class="search-form__item-select" name="gender">
-            <option value="">性別</option>
-            <option value="男性">男性</option>
-            <option value="女性">女性</option>
-            <option value="その他">その他</option>
-        </select>
-
-        <!-- <div class="custom-select-container"> -->
-        <select class="search-form__item-select--category" name="category">
-            <option value="">お問い合わせの種類</option>
-            @foreach ($categories as $category)
-            <!-- <option value="{{ $category->id }}">{{ $category['content'] }}</option> -->
-            <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
-                {{ $category->content }}
+<div class='admin__content'>
+    <form class="admin-form__content" action="{{ route('admin.search') }}" method="get">
+        @csrf
+        <div class="admin-form__content-item">
+            <input class="form-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword', $request->keyword) }}">
+            <!-- value="{{ old('keyword') }}"> -->
+            <select class="form-select" name="gender">
+                <option value="">性別</option>
+                <option value="1" {{ old('gender', $request->gender) == '1' ? 'selected' : '' }}>男性</option>
+                <option value="2" {{ old('gender', $request->gender) == '2' ? 'selected' : '' }}>女性</option>
+                <option value="3" {{ old('gender', $request->gender) == '3' ? 'selected' : '' }}>その他</option>
+                <!-- <option value="1">男性</option> 
+                <option value="2">女性</option>
+                <option value="3">その他</option> -->
+            </select>
+            <select class="form-select2" name="category_id">
+                <option value="">お問い合わせの種類</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}" {{ old('category_id', $request->category_id) == $category->id ? 'selected' : '' }}>
+                    <!-- {{ request('category_id') == $category->id ? 'selected' : '' }}> -->
+                    {{ $category->content }}
+                </option>
                 @endforeach
-        </select>
-        <!-- <option value="delivery">商品のお届けについて</option>
-                    <option value="exchange">商品の交換について</option>
-                    <option value="trouble">商品トラブル</option>
-                    <option value="feedback">ショップへのお問い合わせ</option>
-                    <option value="other">その他</option> -->
-        </select>
-        <!-- </div> -->
-        <input class="" type="date" id="date" name="date" value="{{ old('date', date('Y-m-d')) }}">
-
-
+            </select>
+            <input class="form-date" type="date" name="save_date" value="{{ old('date', $request->save_date) }}">
+        </div>
         <button class="search-button" type="submit">検索</button>
-        <button class="reset-button" type="submit">リセット</button>
+        <!-- <button class="reset-button" type="reset" onclick=" window.location.href='/admin/search' ;">リセット</button> -->
+        <!-- リセットボタン -->
+        <a class="reset-button" href="{{ route('admin') }}">リセット</a>
+    </form>
+</div>
+<div class="pagination">
+    <a href="{{ $contacts->previousPageUrl() }}" class="pagination-arrow {{ $contacts->onFirstPage() ? 'disabled' : '' }}">＜</a>
+    @for ($i = 1; $i <= $contacts->lastPage(); $i++)
+        <a href="{{ $contacts->url($i) }}" class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
+    @endfor
+    <a href="{{ $contacts->nextPageUrl() }}" class="pagination-arrow {{ !$contacts->hasMorePages() ? 'disabled' : '' }}">＞</a>
+</div>
 
-        </=>
 
-        <table class="admin__table">
-            <tr class="admin__table-title">
-                <th>お名前</th>
-                <th>性別</th>
-                <th>メールアドレス</th>
-                <th>お問い合わせの種類</th>
+
+
+
+{{-- <div class="pagination"> 
+    <a href="#" class="pagination-arrow disabled">＜</a>
+    <a href="#" class="pagination-number active">1</a>
+    <a href="#" class="pagination-number">2</a>
+    <a href="#" class="pagination-number">3</a>
+    <a href="#" class="pagination-number">4</a>
+    <a href="#" class="pagination-number">5</a>
+    <a href="#" class="pagination-arrow">＞</a>
+</div>　--}}
+
+<div class="admin-table">
+    <table class="admin-table__inner">
+        <thead>
+            <tr class="admin-table__row">
+                <th class="admin-table__header-span">お名前</th>
+                <th class="admin-table__header-span">性別</th>
+                <th class="admin-table__header-span">メールアドレス</th>
+                <th class="admin-table__header-span">お問い合わせの種類</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach ($contacts as $contact)
+            <tr class="admin-table__row1">
+                <td class="admin-table__item">{{ $contact->last_name }} {{ $contact->first_name }}</td>
+                <td class="admin-table__item">{{ $contact->gender_label }}</td>
+                <td class="admin-table__item">{{ $contact->email }}</td>
+                <td class="admin-table__item">{{ $contact->category->content }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-        </table>
-
-
-        <!-- <form class="form">
+<!-- <form class="form">
         <div class="form__group">
             <div class="form__group-title">
                 <ls class="form__label--item">お名前</ls>
@@ -76,13 +107,4 @@
         </div>
     </form> -->
 
-
-
-        <form action="find" method="POST">
-            @csrf
-            <input type="text" name="input" value="{{$input ?? '' }}">
-            <input type="submit" value="見つける">
-        </form>
-
-</form>
 @endsection

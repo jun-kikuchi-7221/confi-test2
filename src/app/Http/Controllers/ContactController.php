@@ -13,18 +13,33 @@ class ContactController extends Controller
     {
         $contact = Contact::with('category')->get();
         $categories = Category::all();
-        return view('index');
+        return view('index', compact('categories'));
     }
 
     public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'phone_part1', 'phone_part2', 'phone_part3', 'address', 'content', 'detail']);
-        return view('confirm', ['contact' => $contact]);
+        $tel1 = $request->input('tel1');
+        $tel2 = $request->input('tel2');
+        $tel3 = $request->input('tel3');
+        $tel = "{$tel1}{$tel2}{$tel3}";
+
+
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'tel', 'address', 'building', 'category_id', 'detail']);
+        $contact['tel'] = $tel;
+
+        // カテゴリIDを取得
+        // $categoryId = $request->input('category_id');
+        $category = Category::find($contact['category_id']);
+        $contact['category'] = $category->content; // 'category' インデックスにカテゴリ名を設定
+        // $contact['category_id'] = $categoryId;
+       
+        return view('confirm', compact('contact'));
     }
 
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
-        $contact = $request->only(['first_name', 'last_name', 'gender', 'email', 'phone_part1', 'phone_part2', 'phone_part3', 'address', 'content', 'detail']);
+        $contact = $request->only(['category_id', 'first_name', 'last_name', 'gender', 'email', 'tel', 'address', 'building', 'detail']);
+
         Contact::create($contact);
         return view('thanks');
     }

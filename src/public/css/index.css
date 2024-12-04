@@ -31,6 +31,15 @@
 
 }
 
+input:-webkit-autofill {
+    background-color:#f4f4f4 !important;
+    /* 背景色を白に戻す */
+    color: #8B7969 !important;
+    /* テキスト色を黒に設定 */
+    box-shadow: 0 0 0px 1000px #f4f4f4 inset !important;
+    /* 背景の完全な上書き */
+}
+
 .form__group {
     display: flex;
     justify-content: space-between;
@@ -39,12 +48,23 @@
     color: #8B7969;
 }
 
+.form__group-title {
+    margin-top: 5px;
+}
+
 .form__label--required {
     margin-left: 5px;
     padding: 4px 6px;
     border-radius: 3px;
     background: #fafafa;
     color: #ff0000;
+}
+
+.form__error1 {
+    height: 20px;
+    color: #ff0000;
+    margin-left: 170px;
+    text-align: left;
 }
 
 .form__error {
@@ -142,14 +162,14 @@ input[type="radio"]:checked+.radio-circle::after {
 
 .form__group-content {
     display: flex;
-    margin-bottom: 25px;
+    /* margin-bottom: 20px; */
 }
 
 .separator {
     margin: 0 15px;
 }
 
-.form__input--tell4 input {
+.form__input--tel4 input {
 
     padding: 10px;
     /* padding-left: 20px; */
@@ -263,6 +283,7 @@ input[type="radio"]:checked+.radio-circle::after {
 
 .form__input--textarea textarea {
     padding: 10px;
+    padding-left: 20px;
     width: 620px;
     height: 130px;
     border: 1px solid #ddd;
