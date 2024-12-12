@@ -2,7 +2,7 @@
 
 @section('header-button')
 <div class="header-btn">
-    <a class="btn" type="submit" href="/login">logout</a>
+    <a class="btn-logout" type="submit" href="/login">logout</a>
 </div>
 @endsection
 
@@ -16,7 +16,7 @@
 @section('content')
 <div class="admin-form">
     <div class="admin-form__heading">
-        <p>Admin</p>
+        <p class="p1">Admin</p>
     </div>
 </div>
 <div class='admin__content'>
@@ -26,7 +26,9 @@
             <input class="form-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword', $request->keyword) }}">
             <!-- value="{{ old('keyword') }}"> -->
             <select class="form-select" name="gender">
-                <option value="">性別</option>
+                {{-- <option value="">性別</option> --}}
+                <option value="" disabled selected>性別</option> <!-- デフォルトで表示 -->
+                <option value="all" {{ request('gender') == 'all' ? 'selected' : '' }}>全て</option>
                 <option value="1" {{ old('gender', $request->gender) == '1' ? 'selected' : '' }}>男性</option>
                 <option value="2" {{ old('gender', $request->gender) == '2' ? 'selected' : '' }}>女性</option>
                 <option value="3" {{ old('gender', $request->gender) == '3' ? 'selected' : '' }}>その他</option>
@@ -51,27 +53,33 @@
         <a class="reset-button" href="{{ route('admin') }}">リセット</a>
     </form>
 </div>
-<div class="pagination">
-    <a href="{{ $contacts->previousPageUrl() }}" class="pagination-arrow {{ $contacts->onFirstPage() ? 'disabled' : '' }}">＜</a>
-    @for ($i = 1; $i <= $contacts->lastPage(); $i++)
-        <a href="{{ $contacts->url($i) }}" class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
-    @endfor
-    <a href="{{ $contacts->nextPageUrl() }}" class="pagination-arrow {{ !$contacts->hasMorePages() ? 'disabled' : '' }}">＞</a>
+
+<div class="pagination-container">
+    <div class="left-content">
+        <!-- エクスポートボタン -->
+        <a class="btn-export" href="{{ route('admin.export', request()->all()) }}">
+            エクスポート
+        </a>
+        <!-- 成功メッセージ -->
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
+    <div class="pagination">
+        <a href="{{ $contacts->appends(request()->query())->previousPageUrl() }}" 
+        class="pagination-arrow {{ $contacts->onFirstPage() ? 'disabled' : '' }}">＜</a>
+        @for ($i = 1; $i <= $contacts->lastPage(); $i++)
+        <a href="{{ $contacts->appends(request()->query())->url($i) }}" 
+           class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
+        @endfor
+        <a href="{{ $contacts->appends(request()->query())->nextPageUrl() }}" 
+        class="pagination-arrow {{ !$contacts->hasMorePages() ? 'disabled' : '' }}">＞</a>
+    </div>
 </div>
 
 
-
-
-
-{{-- <div class="pagination"> 
-    <a href="#" class="pagination-arrow disabled">＜</a>
-    <a href="#" class="pagination-number active">1</a>
-    <a href="#" class="pagination-number">2</a>
-    <a href="#" class="pagination-number">3</a>
-    <a href="#" class="pagination-number">4</a>
-    <a href="#" class="pagination-number">5</a>
-    <a href="#" class="pagination-arrow">＞</a>
-</div>　--}}
 
 <div class="admin-table">
     <table class="admin-table__inner">
@@ -81,6 +89,7 @@
                 <th class="admin-table__header-span">性別</th>
                 <th class="admin-table__header-span">メールアドレス</th>
                 <th class="admin-table__header-span">お問い合わせの種類</th>
+                <th class="admin-table__header-span"></th>
             </tr>
         </thead>
         <tbody>
@@ -90,21 +99,46 @@
                 <td class="admin-table__item">{{ $contact->gender_label }}</td>
                 <td class="admin-table__item">{{ $contact->email }}</td>
                 <td class="admin-table__item">{{ $contact->category->content }}</td>
+                <td class="admin-table__item2">
+                     <!-- モーダル表示ボタン -->
+                    <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal{{ $contact->id }}">
+                        詳細
+                    </button>
+                </td>
             </tr>
+            <!-- モーダル -->
+            <div class="modal fade" id="contactModal{{ $contact->id }}" data-bs-backdrop="static" 
+                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel{{ $contact->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-custom">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>名前:</strong> <span>{{ $contact->last_name }} {{ $contact->first_name }}</span></p>
+                                <p><strong>性別:</strong> <span>{{ $contact->gender_label }}</span></p>
+                                <p><strong>メールアドレス:</strong> <span>{{ $contact->email }}</span></p>
+                                <p><strong>電話番号:</strong> <span>{{ $contact->tel }}</span></p>
+                                <p><strong>住所:</strong> <span>{{ $contact->address }}</span></p>
+                                <p><strong>建物名:</strong> <span>{{ $contact->building }}</span></p>
+                                <p><strong>お問い合わせの種類:</strong> <span>{{ $contact->category->content }}</span></p>
+                                <p><strong>お問い合わせ内容:</strong> <span>{{ $contact->detail }}</span></p>
+                                <!-- 削除ボタン -->
+                                <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="submit" class="btn-danger">削除</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
         </tbody>
     </table>
 </div>
 
-<!-- <form class="form">
-        <div class="form__group">
-            <div class="form__group-title">
-                <ls class="form__label--item">お名前</ls>
-                <ls class="form__label--item">性別</ls>
-                <ls class="form__label--item">メールアドレス</ls>
-                <ls class="form__label--item">お問い合わせの種類</ls>
-            </div>
-        </div>
-    </form> -->
 
 @endsection

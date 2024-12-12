@@ -43,4 +43,14 @@ class ContactController extends Controller
         Contact::create($contact);
         return view('thanks');
     }
+
+    public function destroy($id)
+    {
+        // 指定されたIDのコンタクトを削除
+        $contact = Contact::findOrFail($id);
+        $contact->forceDelete();
+
+        // 削除後に管理画面にリダイレクト
+        return redirect()->route('admin')->with('success', 'お問い合わせを削除しました。');
+    }
 }

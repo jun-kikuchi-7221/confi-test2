@@ -131,16 +131,12 @@
             <div class="form__group-content">
                 <div class="form__input--text6">
                     <input class="building-input" type="text" name="building" placeholder="例: 千駄ヶ谷マンション101" value="{{ old('building') }}" />
-                    <div class="form__error">
-                        @error('building')
-                        {{ $message }}
-                        @enderror
-                    </div>
+                    
                 </div>
 
             </div>
         </div>
-        <div class="form__group">
+        <div class="form__group2">
             <div class="form__group-title">
                 <span class="form__label--item">お問い合わせの種類</span>
                 <span class="form__label--required">※</span>
@@ -153,7 +149,7 @@
                     @endforeach
                 </select>
                 <div class="form__error">
-                    @error('category')
+                    @error('category_id')
                     {{ $message }}
                     @enderror
                 </div>

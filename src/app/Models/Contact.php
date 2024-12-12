@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use App\Models\Category;
 
 class Contact extends Model
 {
@@ -41,7 +40,6 @@ class Contact extends Model
 
         return $genders[$this->gender] ?? '不明';
     }
-
     
 
     public function scopeCategorySearch($query, $category_id)
