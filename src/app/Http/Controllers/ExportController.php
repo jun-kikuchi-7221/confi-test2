@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact; // データ取得用のモデル
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -10,19 +11,37 @@ class ExportController extends Controller
 {
     public function export(Request $request)
     {
-        // 検索条件に基づいてデータを取得
+        // 検索条件を取得
+        $keyword = $request->input('keyword');
+        $gender = $request->input('gender');
+        $categoryId = $request->input('category_id');
+        $saveDate = $request->input('save_date');
+
+        // クエリビルダの準備
         $query = Contact::query();
 
-        if ($request->filled('category_id')) {
-            $query->where('category_id', $request->category_id);
+        // 検索条件を適用
+        if (!empty($keyword)) {
+            $query->where(function ($q) use ($keyword) {
+                $q->where('first_name', 'LIKE', "%{$keyword}%")
+                ->orWhere('last_name', 'LIKE', "%{$keyword}%")
+                ->orWhere(DB::raw("CONCAT(last_name, ' ', first_name)"), 'LIKE', "%{$keyword}%")
+                ->orWhere(DB::raw("CONCAT(last_name, first_name)"), 'LIKE', "%{$keyword}%")
+                ->orWhere('email', 'LIKE', "%{$keyword}%");
+            });
         }
 
-        if ($request->filled('name')) {
-            $query->where('first_name', 'like', '%' . $request->name . '%')
-                ->orWhere('last_name', 'like', '%' . $request->name . '%');
+        if (!empty($gender) && $gender !== 'all') {
+            $query->where('gender', $gender);
         }
 
-        // 必要に応じて追加の絞り込み条件
+        if (!empty($categoryId)) {
+            $query->where('category_id', $categoryId);
+        }
+
+        if (!empty($saveDate)) {
+            $query->whereDate('created_at', $saveDate);
+        }
 
         $contacts = $query->get();
 
@@ -35,17 +54,27 @@ class ExportController extends Controller
 
 
             // ヘッダー行
-            fputcsv($handle, ['ID', 'カテゴリID', '名前', 'メール', '電話番号', '住所']);
+            fputcsv($handle, ['ID', '名前', '性別',  'メール', '電話番号', '住所','建物名', 'お問い合わせの種類', 'お問い合わせ内容']);
+
+            // 性別の変換用配列
+            $genderLabels = [
+                1 => '男性',
+                2 => '女性',
+                3 => 'その他',
+            ];
 
             // データ行
             foreach ($contacts as $contact) {
                 fputcsv($handle, [
                     $contact->id,
-                    $contact->category_id,
-                    $contact->first_name . ' ' . $contact->last_name,
+                    $contact->last_name . ' ' . $contact->first_name,
+                    $genderLabels[$contact->gender] ?? '不明', // 性別を漢字に変換。該当しない場合は「不明」
                     $contact->email,
                     $contact->tel,
                     $contact->address,
+                    $contact->building,
+                    optional($contact->category)->content,
+                    $contact->detail,
                 ]);
             }
 

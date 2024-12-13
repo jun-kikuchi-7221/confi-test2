@@ -67,15 +67,31 @@
             </div>
         @endif
     </div>
-    <div class="pagination">
-        <a href="{{ $contacts->appends(request()->query())->previousPageUrl() }}" 
-        class="pagination-arrow {{ $contacts->onFirstPage() ? 'disabled' : '' }}">＜</a>
-        @for ($i = 1; $i <= $contacts->lastPage(); $i++)
-        <a href="{{ $contacts->appends(request()->query())->url($i) }}" 
-           class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
-        @endfor
-        <a href="{{ $contacts->appends(request()->query())->nextPageUrl() }}" 
-        class="pagination-arrow {{ !$contacts->hasMorePages() ? 'disabled' : '' }}">＞</a>
+    <div class="pagination-wrapper">
+        <div class="pagination">
+            <a href="{{ $contacts->appends(request()->query())->previousPageUrl() }}" 
+            class="pagination-arrow {{ $contacts->onFirstPage() ? 'disabled' : '' }}">＜</a>
+
+                        <!-- 数字部分 (現在ページを中心に5個分だけ表示) -->
+                @php
+                    $start = max($contacts->currentPage() - 2, 1); // 開始ページ
+                    $end = min($start + 4, $contacts->lastPage()); // 終了ページ
+
+                    // 開始と終了を調整 (5個分確保)
+                    if (($end - $start) < 4) {
+                        $start = max($end - 4, 1);
+                    }
+                 @endphp
+            @for ($i = $start; $i <= $end; $i++)
+            {{-- @for ($i = 1; $i <= $contacts->lastPage(); $i++) --}}
+            <a href="{{ $contacts->appends(request()->query())->url($i) }}" 
+            class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
+            @endfor
+
+            <!-- 次のページ -->
+            <a href="{{ $contacts->appends(request()->query())->nextPageUrl() }}" 
+            class="pagination-arrow {{ !$contacts->hasMorePages() ? 'disabled' : '' }}">＞</a>
+        </div>
     </div>
 </div>
 
