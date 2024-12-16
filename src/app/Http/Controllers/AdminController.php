@@ -28,9 +28,7 @@ class AdminController extends Controller
         $gender = $request->input('gender');
         $categoryId = $request->input('category_id');
         $saveDate = $request->input('save_date');
-
         $query = Contact::query();
-
 
         if (!empty($keyword)) {
             $query->where(function ($q) use ($keyword) {

@@ -140,6 +140,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     /* カレンダー機能を有効化 */
 }
 
+/* 管理画面のすべてのフォーム要素に適用 */
+.form-select:focus-visible,
+.form-select2:focus-visible,
+.form-input:focus-visible,
+.form-date:focus-visible {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+
+
+
+
+
 
 .search-button {
     width: 10%;
