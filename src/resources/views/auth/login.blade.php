@@ -2,7 +2,7 @@
 
 @section('header-button')
 <div class="header-btn">
-    <a class="btn" type="submit" href="/register">register</a>
+    <a class="btn" href="{{ route('register') }}">register</a>
 </div>
 @endsection
 
@@ -19,7 +19,7 @@
         <p>Login</p>
     </div>
     <div class="login-form">
-        <form class="form" action="/login" method="post">
+        <form class="form" action="{{ route('login') }}" method="post">
             @csrf
             <div class="form__group">
                 <div class="form__group-title">
@@ -55,6 +55,6 @@
                 <button class="form__button-submit" type="submit">ログイン</button>
             </div>
         </form>
-
     </div>
+
     @endsection

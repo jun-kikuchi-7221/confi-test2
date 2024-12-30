@@ -36,11 +36,23 @@ class ContactController extends Controller
         return view('confirm', compact('contact'));
     }
 
+    public function edit(Request $request)
+    {
+        // 入力データをセッションに保存
+        session(['form_data' => $request->all()]);
+
+        // indexリダイレクト
+        return redirect('/home')->withInput();
+    }
+
     public function store(Request $request)
     {
         $contact = $request->only(['category_id', 'first_name', 'last_name', 'gender', 'email', 'tel', 'address', 'building', 'detail']);
 
         Contact::create($contact);
+
+        session()->forget('form_data');
+
         return view('thanks');
     }
 

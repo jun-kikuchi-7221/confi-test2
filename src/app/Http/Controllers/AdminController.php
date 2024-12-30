@@ -10,7 +10,6 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
-    // public function search(Request $request)
     public function index(Request $request)
     {
         $contacts = Contact::paginate(7);

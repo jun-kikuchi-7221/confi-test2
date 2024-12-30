@@ -1,9 +1,15 @@
+
 @extends('layouts.app')
 
 @section('header-button')
-<div class="header-btn">
-    <a class="btn-logout" type="submit" href="/login">logout</a>
-</div>
+<form class="header-btn" method="POST" action="{{ route('logout') }}">
+    @csrf
+    <button class="btn-logout" type="submit">logout</button>
+</form>
+
+{{-- <div class="header-btn">
+    <button class="btn-logout" type="submit" href="/logout">logout</button>
+</div> --}}
 @endsection
 
 @section('css')
@@ -12,6 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inika&display=swap" rel="stylesheet">
 @endsection
+
 
 @section('content')
 <div class="admin-form">
@@ -158,3 +165,9 @@
 
 
 @endsection
+{{-- @else
+<p>LOGINに失敗しました。</p>
+<div class="header-btn">
+    <a class="btn-logout" type="submit" href="/login">login</a>
+</div>
+@endif --}}

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <form class="form" action="/" method="get">
+    <form class="form" action="/home" method="get">
         @csrf
         <div class="thank-you-background">
             <p>お問い合わせありがとうございました。</p>

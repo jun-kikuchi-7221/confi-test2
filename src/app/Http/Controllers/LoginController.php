@@ -9,7 +9,7 @@ use App\Models\Category;
 
 class LoginController extends Controller
 {
-    public function login(LoginRequest $request)
+    public function admin(LoginRequest $request)
     {
         $login = $request->only(['email', 'password']);
 
@@ -17,9 +17,12 @@ class LoginController extends Controller
         $categories = Category::all();
         // return view('/admin', ['login' => $login]);
         // return view('admin', compact('contacts', 'categories', 'request'));
-        return redirect()->route('admin')->with('contacts', 'categories', 'request');
+        return redirect()->route('admin')->with('success', 'お問い合わせを削除しました。');
 
     }
 
-   
+    public function redirectTo()
+    {
+        return '/admin';
+    }
 }

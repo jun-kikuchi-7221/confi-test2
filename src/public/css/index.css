@@ -14,7 +14,7 @@
 }
 
 .contact-form__heading {
-    margin-top: 0;
+    margin-top: 20px;
     margin-bottom: 40px;
     text-align: center;
     font-family: Inika;
@@ -31,14 +31,26 @@
 
 }
 
+/* 履歴から選択された値の色を変更する */
 input:-webkit-autofill {
+    color: #BEB1A6;
+    /* 自分の好きな文字色 */
+    background-color: #f4f4f4;
+    /* 背景色 */
+    -webkit-text-fill-color: #8B7969;
+    /* 文字の色を明示的に指定 */
+    transition: background-color 5000s ease-in-out 0s;
+    /* 背景色の変化を防ぐ */
+}
+
+/* input:-webkit-autofill {
     background-color:#f4f4f4 !important;
     /* 背景色を白に戻す */
-    color: #8B7969 !important;
+    /* color: #8B7969 !important; */
     /* テキスト色を黒に設定 */
-    box-shadow: 0 0 0px 1000px #f4f4f4 inset !important;
+    /* box-shadow: 0 0 0px 1000px #f4f4f4 inset !important; */
     /* 背景の完全な上書き */
-}
+/* } */ 
 
 .form__group {
     display: flex;
@@ -194,10 +206,6 @@ input[type="radio"]:checked+.radio-circle::after {
     appearance: none;
 }
 
-/* .separator {
-    margin: 0 10px;
-    font-size: 20px;
-} */
 
 .form__input--text5 input {
     padding: 10px;
@@ -231,7 +239,6 @@ input[type="radio"]:checked+.radio-circle::after {
 .custom-select-container {
     position: relative;
     display: inline-block;
-
     margin-right: 290px;
 }
 
@@ -244,12 +251,22 @@ input[type="radio"]:checked+.radio-circle::after {
     padding-left: 20px;
     font-family: Inika;
     font-size: 14px;
-    color: #8B7969;
+    color: #BEB1A6;
     border: 1px solid #ddd;
     border-radius: 3px;
     background: #F4F4F4;
     width: 330px;
     
+}
+
+.custom-select:not(:invalid) {
+    color: #8B7969;
+    /* 選択後の文字色 */
+}
+
+/* プレースホルダー用オプション */
+.custom-select option[disabled] {
+    color: #BEB1A6;
 }
 
 .custom-select-container::after {
@@ -260,10 +277,9 @@ input[type="radio"]:checked+.radio-circle::after {
     transform: translateY(-80%);
     font-size: 20px;
     margin-bottom: 30px;
+    color: #BEB1A6;   /* 矢印の色 */
+    pointer-events: none; /* 矢印をクリックできないようにする */
 
-    pointer-events: none;
-    /* 矢印をクリックできないようにする */
-    /* color: #8B7969; */
 }
 
 

@@ -17,7 +17,7 @@
     <header class="header">
         <div class="header__inner">
             <div class="header-utilities">
-                <a class="header__logo" href="/login"> <!--  type="submit" -->
+                <a class="header__logo">
                     FashionablyLate
                 </a>
                 @yield('header-button')

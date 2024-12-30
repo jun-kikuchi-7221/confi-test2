@@ -12,7 +12,7 @@
     <div class="confirm__heading">
         <p>Confirm</p>
     </div>
-    <form class="form" action="/contacts" method="POST">
+    <form class="form" action="{{ route('contacts.store') }}"  method="POST">
         @csrf
         <div class="confirm-table">
             <table class="confirm-table__inner">
@@ -82,11 +82,29 @@
                 </tr>
             </table>
         </div>
+        
         <div class="form__button">
             <button class="form__button-submit" type="submit">送信</button>
-            <button class="form__button-submit--fixes" type="button" onclick="history.back()">修正</button>
+            {{-- <button class="form__button-submit--fixes" type="button" onclick="history.back()">修正</button> --}}
         </div>
     </form>
-
+    <!-- 修正ボタン -->
+    <form class="form2" action="{{ route('contacts.edit') }}" method="post" >
+        @csrf
+        <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
+        <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">
+        <input type="hidden" name="gender" value="{{ $contact['gender'] }}">
+        <input type="hidden" name="email" value="{{ $contact['email'] }}">
+        <input type="hidden" name="tel1" value="{{ substr($contact['tel'], 0, 3) }}">
+        <input type="hidden" name="tel2" value="{{ substr($contact['tel'], 3, 4) }}">
+        <input type="hidden" name="tel3" value="{{ substr($contact['tel'], 7, 4) }}">
+        <input type="hidden" name="address" value="{{ $contact['address'] }}">
+        <input type="hidden" name="building" value="{{ $contact['building'] }}">
+        <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
+        <input type="hidden" name="detail" value="{{ $contact['detail'] }}">
+        <div class="form__button2">
+            <button class="form__button-submit--fixes" type="submit">修正</button>
+        </div>
+    </form>
 </div>
 @endsection
