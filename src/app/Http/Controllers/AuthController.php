@@ -32,31 +32,6 @@ class AuthController extends Controller
         return redirect('/login'); // ログインページにリダイレクト
     }
 
-    // ログイン処理
-    // public function login(LoginRequest $request)
-    // {
-        // バリデーション済みのデータを使ってログイン処理
-        // $credentials = $request->only('email', 'password');
-
-        // if (Auth::attempt($credentials, $request->has('remember'))) {
-            // return redirect()->intended('/dashboard'); // 管理画面へリダイレクト
-            // $contacts = Contact::paginate(7);
-            // $categories = Category::all();
-
-            // ログイン成功
-            // return redirect()->route('admin')->with('contacts', 'categories', 'request');
-            // return redirect()->route('admin'); // 管理画面へリダイレクト
-
-        // }
-
-        // ログイン失敗
-        // return back()->withErrors([
-        //     'email' => 'メールアドレスまたはパスワードが正しくありません。',
-        // ]);
-
-        // return back()->withErrors([
-        //     'email' => '認証情報が正しくありません。',
-        // ])->withInput();
-    // }
+    
 
 }

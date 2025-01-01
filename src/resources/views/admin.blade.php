@@ -7,9 +7,7 @@
     <button class="btn-logout" type="submit">logout</button>
 </form>
 
-{{-- <div class="header-btn">
-    <button class="btn-logout" type="submit" href="/logout">logout</button>
-</div> --}}
+
 @endsection
 
 @section('css')
@@ -39,9 +37,7 @@
                 <option value="1" {{ old('gender', $request->gender) == '1' ? 'selected' : '' }}>男性</option>
                 <option value="2" {{ old('gender', $request->gender) == '2' ? 'selected' : '' }}>女性</option>
                 <option value="3" {{ old('gender', $request->gender) == '3' ? 'selected' : '' }}>その他</option>
-                <!-- <option value="1">男性</option> 
-                <option value="2">女性</option>
-                <option value="3">その他</option> -->
+                
             </select>
             <select class="form-select2" name="category_id">
                 <option value="">お問い合わせの種類</option>
@@ -89,7 +85,6 @@
                     }
                  @endphp
             @for ($i = $start; $i <= $end; $i++)
-            {{-- @for ($i = 1; $i <= $contacts->lastPage(); $i++) --}}
             <a href="{{ $contacts->appends(request()->query())->url($i) }}" 
             class="pagination-number {{ $i == $contacts->currentPage() ? 'active' : '' }}">{{ $i }}</a>
             @endfor

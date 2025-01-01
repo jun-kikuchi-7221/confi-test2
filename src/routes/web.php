@@ -48,14 +48,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::middleware(['auth'])->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); 
-// });
-
-// Route::get('/login', [AuthController::class, 'index']);
-// ユーザー登録画面
-// Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-// ログイン画面
-// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 Route::get('/admin/search', [AdminController::class, 'search'])->name('admin.search');
 

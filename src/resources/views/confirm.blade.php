@@ -31,10 +31,10 @@
                         男性
                         @elseif($contact['gender'] === '2')
                         女性
-                        @else($contact['gender'] === '3')
+                        @elseif($contact['gender'] === '3')
                         その他
                         @endif
-                        <!-- {{ $contact['gender'] === 'male' ? '男性' : ($contact['gender'] === 'female' ? '女性' : 'その他') }} -->
+
                         <input type="hidden" name="gender" value="{{ $contact['gender'] }}" />
                     </td>
                 </tr>
