@@ -36,18 +36,17 @@ Route::post('/logout', function () {
 })->name('logout');
 
 
-Route::get('/contents', [ContactController::class, 'index'])->name('contacts.index');
-
+Route::get('/home', [ContactController::class, 'index'])->name('contacts.index');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
 Route::post('/contacts/edit', [ContactController::class, 'edit'])->name('contacts.edit');
 Route::post('/thanks', [ContactController::class, 'thanks']);
-Route::delete('/admin/contacts/{id}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
+Route::delete('/admin/{id}', [ContactController::class, 'destroy'])->name('admin.destroy');
 
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 });
 // Route::post('/logout', [AuthController::class, 'logout'])->name('logout'); 
 // });

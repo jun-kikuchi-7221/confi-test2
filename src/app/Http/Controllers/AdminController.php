@@ -62,5 +62,10 @@ class AdminController extends Controller
         // ビューにデータを渡す
         return view('admin', compact('contacts', 'categories', 'request'));
 
+
+
+        
     }
+
+
 }

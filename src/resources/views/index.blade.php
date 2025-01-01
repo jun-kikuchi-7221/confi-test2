@@ -158,15 +158,6 @@
                     {{ $message }}
                     @enderror
                 </div>
-
-                <!-- <div class="search-form__item">
-                    <input class="search-form__item-input" type="text" name="keyword" value="{{ old('keyword') }}">
-                    <select class="search-form__item-select" name="category_id">
-                        <option value="">カテゴリ</option>
-                       
-                    </select>
-                </div> -->
-
             </div>
         </div>
 

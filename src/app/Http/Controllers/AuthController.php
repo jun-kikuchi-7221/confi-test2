@@ -37,20 +37,15 @@ class AuthController extends Controller
     // {
         // バリデーション済みのデータを使ってログイン処理
         // $credentials = $request->only('email', 'password');
-        // dd($credentials);
-        // ここでcredentialsの内容を確認するためのログを追加
-        // Log::info('Login attempt with credentials:', $credentials);
 
         // if (Auth::attempt($credentials, $request->has('remember'))) {
             // return redirect()->intended('/dashboard'); // 管理画面へリダイレクト
             // $contacts = Contact::paginate(7);
             // $categories = Category::all();
-            
+
             // ログイン成功
             // return redirect()->route('admin')->with('contacts', 'categories', 'request');
             // return redirect()->route('admin'); // 管理画面へリダイレクト
-
-            
 
         // }
 
@@ -58,8 +53,6 @@ class AuthController extends Controller
         // return back()->withErrors([
         //     'email' => 'メールアドレスまたはパスワードが正しくありません。',
         // ]);
-
-
 
         // return back()->withErrors([
         //     'email' => '認証情報が正しくありません。',

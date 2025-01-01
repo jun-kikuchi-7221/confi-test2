@@ -55,9 +55,8 @@
             <input class="form-date" type="date" name="save_date" value="{{ old('date', $request->save_date) }}">
         </div>
         <button class="search-button" type="submit">検索</button>
-        <!-- <button class="reset-button" type="reset" onclick=" window.location.href='/admin/search' ;">リセット</button> -->
         <!-- リセットボタン -->
-        <a class="reset-button" href="{{ route('admin') }}">リセット</a>
+        <a class="reset-button" href="{{ route('admin.index') }}">リセット</a>
     </form>
 </div>
 
@@ -148,9 +147,9 @@
                                 <p><strong>お問い合わせの種類:</strong> <span>{{ $contact->category->content }}</span></p>
                                 <p><strong>お問い合わせ内容:</strong> <span>{{ $contact->detail }}</span></p>
                                 <!-- 削除ボタン -->
-                                <form action="{{ route('admin.contacts.destroy', $contact->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
-                                        @method('DELETE')
+                                <form action="{{ route('admin.destroy', $contact->id) }}" method="POST" onsubmit="return confirm('本当に削除しますか？');">
                                         @csrf
+                                        @method('DELETE')
                                         <button type="submit" class="btn-danger">削除</button>
                                 </form>
                             </div>

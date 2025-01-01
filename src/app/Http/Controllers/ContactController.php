@@ -28,10 +28,8 @@ class ContactController extends Controller
         $contact['tel'] = $tel;
 
         // カテゴリIDを取得
-        // $categoryId = $request->input('category_id');
         $category = Category::find($contact['category_id']);
         $contact['category'] = $category->content; // 'category' インデックスにカテゴリ名を設定
-        // $contact['category_id'] = $categoryId;
        
         return view('confirm', compact('contact'));
     }
@@ -63,6 +61,6 @@ class ContactController extends Controller
         $contact->forceDelete();
 
         // 削除後に管理画面にリダイレクト
-        return redirect()->route('admin')->with('success', 'お問い合わせを削除しました。');
+        return redirect()->route('admin.index')->with('success', 'お問い合わせを削除しました。');
     }
 }
