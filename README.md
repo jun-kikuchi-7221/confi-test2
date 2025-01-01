@@ -30,7 +30,5 @@ Laravel 環境構築
 
 ## URL
 
-    ・開発環境：http://localhost/
+    ・開発環境:http://localhost/home
     ・phpMyAdmin：http://localhost:8080/
-# confi-test3
-# confi-test3
