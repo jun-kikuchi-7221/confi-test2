@@ -29,7 +29,7 @@
         @csrf
         <div class="admin-form__content-item">
             <input class="form-input" type="text" name="keyword" placeholder="名前やメールアドレスを入力してください" value="{{ old('keyword', $request->keyword) }}">
-            <!-- value="{{ old('keyword') }}"> -->
+            
             <select class="form-select" name="gender">
                 {{-- <option value="">性別</option> --}}
                 <option value="" disabled selected>性別</option> <!-- デフォルトで表示 -->
