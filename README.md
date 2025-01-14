@@ -1,4 +1,4 @@
-# お問い合わせフォーム
+# FashionablyLate(お問い合わせフォーム)
 
 ## 環境構築
 
@@ -9,8 +9,9 @@ Docker ビルド
     3.docker compose up -d --build
     MacのM1チップのPCだったのでdocker-compose.ymlファイルの内容をそのままに
     docker compose up -d --buildをすると"no matching manifest for linux/arm64/v8 in the manifest list entries"というエラーが出るので下記のようにコンテナ毎に"platform: linux/x86_64"を追記した。
-    またファイル先頭の"versionの記述"も不必要だった為、削除した。
+    またファイル先頭の"version '3.8'"の記述"も不必要だった為、削除した。
 
+    例：
     mysql:
     platform: linux/x86_64(この文追加)
     image: mysql:8.0.26
