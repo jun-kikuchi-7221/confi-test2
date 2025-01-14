@@ -28,9 +28,9 @@ class ContactRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'gender' => 'required',
             'email' => ['required', 'email'],
-            'tel1' => ['required', 'numeric', 'max:99999'],
-            'tel2' => ['required', 'numeric', 'max:99999'],
-            'tel3' => ['required', 'numeric', 'max:99999'],
+            'tel1' => ['required', 'numeric', 'max:5'],
+            'tel2' => ['required', 'numeric', 'max:5'],
+            'tel3' => ['required', 'numeric', 'max:5'],
             'address' => 'required',
             'category_id' => 'required',
             'detail' =>  ['required', 'max:120']
@@ -48,9 +48,9 @@ class ContactRequest extends FormRequest
             'tel1.required' => '電話番号を入力してください',
             'tel2.required' => '電話番号を入力してください',
             'tel3.required' => '電話番号を入力してください',
-            'tel1.numeric' => '電話番号は５桁までの数字で入力してください',
-            'tel2.numeric' => '電話番号は５桁までの数字で入力してください',
-            'tel3.numeric' => '電話番号は５桁までの数字で入力してください',
+            'tel1.numeric' => '電話番号は５桁までの半角数字で入力してください',
+            'tel2.numeric' => '電話番号は５桁までの半角数字で入力してください',
+            'tel3.numeric' => '電話番号は５桁までの半角数字で入力してください',
             'tel1.max' => '電話番号は５桁までの数字で入力してください',
             'tel2.max' => '電話番号は５桁までの数字で入力してください',
             'tel3.max' => '電話番号は５桁までの数字で入力してください',
@@ -61,13 +61,5 @@ class ContactRequest extends FormRequest
         ];
     }
 
-    /*public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            // 'gender' が 'other' の場合にエラーメッセージを追加
-            if ($this->input('gender') == 'other') {
-                $validator->errors()->add('gender', '性別を選択してください。');
-            }
-        });
-    }*/
+    
 }
